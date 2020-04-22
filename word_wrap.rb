@@ -56,29 +56,28 @@ def word_length(words, limit)
         arr << w
         count += w.length
       else
-        new_set = overflow.push("-", w)
+        new_set = overflow.push('-', w)
         arr.concat(new_set)
-        count += new_set.join("").length
+        count += new_set.join('').length
         overflow = []
-        puts "Here: #{w}" if w =="flame"
       end
     end
 
     if count < limit
-      arr << "-"
+      arr << '-'
       count += 1
     end
 
-    char_count = arr.join("").chars.length
+    char_count = arr.join('').chars.length
     if char_count > limit
       puts "ARR1: #{arr}"
       extra_word = arr.pop
       overflow << extra_word
-      arr.pop if arr.last.include?("-")
+      arr.pop if arr.last.include?('-')
     end
 
     if count >= limit
-      arr.pop if arr.last.include?("-")
+      arr.pop if arr.last.include?('-')
       limited_array << arr.join('')
       puts "ARR2: #{arr}"
       arr = []
@@ -101,7 +100,7 @@ words1 = [ "The", "day", "began", "as", "still", "as", "the",
           "flame" ]
 
 
-          ziba = word_length(words1, 20)
+ziba = word_length(words1, 20)
 
 ziba = word_length(words1, 13)
 
