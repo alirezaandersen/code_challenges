@@ -126,7 +126,7 @@ def find_rectangle(image)
 end
 
 ziba1 = find_rectangle(image1) == "x:3 y:2, width: 3, height: 2"
-puts "Ziba 1 #{ziba1}"
+puts "Ziba 1 #{ziba1}" 
 
 ziba2 = find_rectangle(image2) == "x:6 y:4, width: 1, height: 1"
 puts "Ziba 2 #{ziba2}"
