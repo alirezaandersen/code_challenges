@@ -1,5 +1,27 @@
 def solution(arr)
-	
+
+	return "" if arr.size <= 1 || arr.include?(0)
+	left = []
+	right = []
+
+	arr.each_with_index do | num, i|
+		num = [] if num < 0
+		if i.even?
+			right << num
+		else
+			left << num
+		end
+	end
+
+	left.flatten!
+	right.flatten!
+
+	if left.max > right.max
+		return "Left"
+	else
+		return "Right"
+	end
+
 end
 
 arr1 = [1,4,100, 5]
