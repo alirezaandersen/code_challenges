@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 RSpec.describe 'bill_for' do
   let(:user_signed_up) do
     [
