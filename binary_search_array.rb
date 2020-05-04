@@ -49,7 +49,7 @@ response5 = "Left"
 ar5 = solution(arr5)
 puts "ARR5:#{ar5}:::#{ar5 == response5}"
 
-# Write a fucntion that determines whether the left or right branch of the tree is larger.
+# Write a function that determines whether the left or right branch of the tree is larger.
 # The size of each branch is the sum of the node values. The function should return The
 # string "Right" if the right side is larger and "Left" if the left side is larger. If the
 # tree has 0 nodes or if the size of the branches are equal, return an empty string.
