@@ -46,7 +46,7 @@ puts "ARR4:#{arr4}:::#{ar4 == response4}"
 
 arr5 = [3, 6, 2, 9, -1, 10]
 response5 = "Left"
-ar5 = solution(arr5)
+# ar5 = solution(arr5)
 puts "ARR5:#{ar5}:::#{ar5 == response5}"
 
 # Write a function that determines whether the left or right branch of the tree is larger.
