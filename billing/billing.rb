@@ -4,7 +4,7 @@ def bill_for(month, active_subscription, users)
   # your code here!
   return puts "Cat" if users.nil?
   fee = active_subscription[:monthly_price_in_dollars]
-  daily_cost = fee / 31.to_f#(days in month) 
+  daily_cost = fee / 31.to_f#(days in month)
 
   puts "daily_cost: #{daily_cost}"
 
@@ -37,7 +37,7 @@ def first_day_of_month(date)
 end
 
 # Takes a Date object and returns a Date which is the last day
-# of that month. For example:
+# of that month. For example: 
 #
 # last_day_of_month(Date.new(2019, 2, 7)) # => Date.new(2019, 2, 28)
 #
