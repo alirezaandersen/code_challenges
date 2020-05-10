@@ -37,7 +37,7 @@ def first_day_of_month(date)
 end
 
 # Takes a Date object and returns a Date which is the last day
-# of that month. For example: 
+# of that month. For example:
 #
 # last_day_of_month(Date.new(2019, 2, 7)) # => Date.new(2019, 2, 28)
 #
