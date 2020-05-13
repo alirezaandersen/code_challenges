@@ -27,3 +27,8 @@ def flip_and_invert_image(a)
   end
   new_arr
 end
+
+
+def convert_time(seconds)
+  Time.at(seconds).utc.strftime("%l:%M:%S")
+end
