@@ -16,16 +16,7 @@ end
 [1,1,4,2,1,3]
 
 def flip_and_invert_image(a)
-  new_arr = a.map do |arr|
-    arr.map do |int|
-      if int < 1
-      return 0
-      else
-      return 1
-      end
-    end
-  end
-  new_arr
+  a.map { |row| row.reverse.map { |pixel| pixel ^ 1 }}
 end
 
 
