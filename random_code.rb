@@ -23,3 +23,22 @@ end
 def convert_time(seconds)
   Time.at(seconds).utc.strftime("%l:%M:%S")
 end
+
+def di_string_match(s)
+    min = 0
+    max = s.length
+
+    result = []
+    s.chars.each do |c|
+        if (c == 'I')
+            result << min
+            min += 1
+        else
+            result << max
+            max -= 1
+        end
+    end
+    result << min
+
+    result
+end
