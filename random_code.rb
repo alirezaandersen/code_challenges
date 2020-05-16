@@ -25,20 +25,20 @@ def convert_time(seconds)
 end
 
 def di_string_match(s)
-    min = 0
-    max = s.length
+  min = 0
+  max = s.length
 
-    result = []
-    s.chars.each do |c|
-        if (c == 'I')
-            result << min
-            min += 1
-        else
-            result << max
-            max -= 1
-        end
+  result = []
+  s.chars.each do |c|
+    if (c == 'I')
+      result << min
+      min += 1
+    else
+      result << max
+      max -= 1
     end
-    result << min
+  end
+  result << min
 
-    result
+  result
 end
