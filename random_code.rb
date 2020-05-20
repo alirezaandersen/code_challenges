@@ -74,7 +74,7 @@ def strong_password_checker(s)
     count += 1 if s.chars.each {|a| a.downcase == a }.uniq.include?(false)
 
     #must not repeat 3 times.
-
+    count += repeating_chars(s)
 
 end
 
