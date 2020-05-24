@@ -1,3 +1,13 @@
+# 420 find all repeating characters in a string that repeat more then 3 times,
+# Example 1:
+# Input: "aaa,b,c,a,d"
+# Output "aaa"
+#
+# example 2:
+# Input: "bb, ccc, dd, dddd, ff, f"
+# Input: "bbcccddeddddffi"
+# Output: "ccc, dddd"
+
 def strong_password_checker(s)
     count = 0
     #must be at least 6 characters but less then 20
