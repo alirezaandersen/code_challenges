@@ -50,7 +50,6 @@ def word_length(words, limit)
   count = 0
 
   words.each do |w|
-    puts "WORD: #{w} "
     if w.length < limit
       if overflow.empty?
         arr << w
@@ -70,7 +69,6 @@ def word_length(words, limit)
 
     char_count = arr.join('').chars.length
     if char_count > limit
-      puts "ARR1: #{arr}"
       extra_word = arr.pop
       overflow << extra_word
       arr.pop if arr.last.include?('-')
@@ -79,7 +77,6 @@ def word_length(words, limit)
     if count >= limit
       arr.pop if arr.last.include?('-')
       limited_array << arr.join('')
-      puts "ARR2: #{arr}"
       arr = []
       count = 0
     end
