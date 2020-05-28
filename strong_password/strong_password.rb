@@ -8,6 +8,7 @@
 # Input: "bbcccddeddddffi"
 # Output: "ccc, dddd"
 
+
 def strong_password_checker(s)
     count = 0
     #must be at least 6 characters but less then 20
