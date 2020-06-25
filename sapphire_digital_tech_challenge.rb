@@ -6,10 +6,19 @@ response = HTTParty.get('https://gist.githubusercontent.com/gretchenziegler/853c
 
 parsed_response = JSON.parse(response)
 
+# first style
 deployed_at = parsed_response.map do |call|
   call.last.map do |rows|
     rows.dig('most_recent_deploys', 'platform-api', 'deployed_at')
   end
 end.flatten
 
+
+#second style
+dates = []
+ parsed_response['client_environments'].each do |call|
+  dates << call.dig('most_recent_deploys', 'platform-api', 'deployed_at')
+end
+
 puts "#{deployed_at}"
+puts "#{dates}"
