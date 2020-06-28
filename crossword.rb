@@ -33,19 +33,7 @@ class Cw
       @word2.index(c)
     end.min
 
-    w2_index = @common_chars.map do |c|
-      @word2.index(c)
-    end
-
     w2_intersection_letter = @word2.chars[w2_intersection_index]
-    w1_intersection_letter = @word1.chars[w2_intersection_index]
-
-    # if w2_intersection_letter != w1_intersection_letter
-    #   w2_intersection_letter = @word2.chars[w2_index]
-    #   # binding.pry
-    #   w1_intersection_letter = @word1.chars[w2_intersection_index]
-    # end
-
     w1_intersection_index = @word1.index(w2_intersection_letter)
 
     intersection_coord = [w1_intersection_index, w2_intersection_index]
