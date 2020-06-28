@@ -5,7 +5,6 @@ class Cw
   def initialize()
     @word1 = nil
     @word2 = nil
-
     @grid = nil
   end
 
@@ -18,7 +17,6 @@ class Cw
     create_grid
     build_grid
     print_crossword
-    # find_intersection
   end
 
   def create_grid
@@ -26,29 +24,34 @@ class Cw
     @grid =  height.map { |x| Array.new(@grid_width) }
   end
 
+  def common_chars
+    @word1.chars & @word2.chars
+  end
+
   def find_intersection
-    @common_chars = @word1.chars & @word2.chars #['d', 'a']
+    #compare first common_chars location of word1 and word2
+    fw1 = common_intersection(@word1).first.to_i
+    fw2 = common_intersection(@word2).first.to_i
 
-    @intersections_w1 = {}
-    @common_chars.map { |c| @intersections_w1[c] = @word1.index(c) }
+    #compare last common chars location of word1 and word2
+    lw1 = common_intersection(@word1).last.to_i
+    lw2 = common_intersection(@word2).last.to_i
 
-    #finds word 2
-    @intersections_w2 = {}
-    @common_chars.map { |c| @intersections_w2[c] = @word2.index(c) }
+    #calculate the shortest distance of first and last common_chars of each word
+    @distance1 = Math.sqrt(fw1**2 + fw2**2)
+    @distance2 = Math.sqrt(lw1**2 + lw2**2)
 
-    fw1,fw2 = @intersections_w1.values.first,@intersections_w2.values.first
-    lw1,lw2 = @intersections_w1.values.last,@intersections_w2.values.last
-    @d1 = Math.sqrt(fw1**2 + fw2**2)
-    @d2 = Math.sqrt(lw1**2 + lw2**2)
-    @w1_intersection_index, @w2_intersection_index = @d1 < @d2 ? [fw1, fw2] : [lw1, lw2]
+    @distance1 < @distance2 ? [fw1, fw2] : [lw1, lw2]
+  end
 
-    intersection_coord = [@w1_intersection_index, @w2_intersection_index]
-
-    return intersection_coord
+  def common_intersection(word)
+    #finds index of common chars ie {"a"=>1, "d"=>0}
+    @ci = {}
+    common_chars.map { |c| @ci[c] = word.index(c) }
+    @ci.values
   end
 
   def build_grid
-
     @grid.each_with_index do |row, i|
       row.each_with_index do |column, j|
         # if this is the row for the first word, fill in all the letters
@@ -69,7 +72,7 @@ class Cw
 
     @grid.each_with_index do |row, i|
       row.each_with_index do |column, j|
-        print_lines << "#{@grid[i][j] }"
+        print_lines << "#{@grid[i][j]}"
         if j == @word1.length - 1
           print_lines << " \n"
         end
@@ -77,37 +80,24 @@ class Cw
     end
     puts print_lines
     puts "intersection: #{find_intersection}"
-    puts "@common_chars: #{@common_chars}"
-
-    puts "@intersections_w1: #{@intersections_w1}"
-    puts "@intersections_w2: #{@intersections_w2}"
+    puts "@common_chars: #{common_chars}"
 
     puts "Word1: #{@word1}"
-    puts "@w1_intersection_index: #{@w1_intersection_index}"
-    puts "@w1_intersection_letter: #{@w1_intersection_letter}"
+    puts "@ci: #{@ci}"
 
-    puts "FW1, FW2: #{[@intersections_w1.values.first, @intersections_w2.values.first]}"
-    puts "LW1, LW2: #{[@intersections_w1.values.last,@intersections_w2.values.last]}"
-    puts "D1: #{@d1}"
-    puts "D2: #{@d2}"
+    puts "FW1, FW2: #{[common_intersection(@word1).first.to_i, common_intersection(@word2).first.to_i]}"
+    puts "LW1, LW2: #{[common_intersection(@word1).last.to_i, common_intersection(@word2).last.to_i]}"
+    puts "Distance 1: #{@distance1}"
+    puts "Distance 2: #{@distance2}"
 
     puts "Word2: #{@word2}"
-    puts "@w2_intersection_index: #{@w2_intersection_index}"
-    puts "@w2_intersection_letter: #{@w2_intersection_letter}"
+    puts "@ci: #{@ci}"
   end
 
 end
 
 
 grid = Cw.new()
-puts ""
-grid.crossword("road", "zad")
-
-puts ""
-grid.crossword("road", "dad")
-
-puts ""
-grid.crossword("dad", "road")
 
 puts ""
 grid.crossword("cat", "hat")
@@ -118,4 +108,21 @@ grid.crossword("balloon", "bat")
 puts ""
 grid.crossword("faint", "test")
 
+puts ""
+grid.crossword("road", "dad")
+
+puts ""
+grid.crossword("dad", "road")
+
+puts ""
+grid.crossword("road", "zad")
+
+puts ""
+grid.crossword("zara", "ziba")
+
+puts ""
+grid.crossword("zara", "ali")
+
+puts""
+grid.crossword("ali", "zara")
 # @grid2 = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"], ["J", "K", "L"]]
