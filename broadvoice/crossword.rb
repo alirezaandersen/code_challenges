@@ -38,17 +38,17 @@ class Cw
     lw2 = common_intersection(@word2).last.to_i
 
     #calculate the shortest distance of first and last common_chars of each word
-    @distance1 = Math.sqrt(fw1**2 + fw2**2)
-    @distance2 = Math.sqrt(lw1**2 + lw2**2)
+    distance1 = Math.sqrt(fw1**2 + fw2**2)
+    distance2 = Math.sqrt(lw1**2 + lw2**2)
 
-    @distance1 < @distance2 ? [fw1, fw2] : [lw1, lw2]
+    distance1 < distance2 ? [fw1, fw2] : [lw1, lw2]
   end
 
   def common_intersection(word)
     #finds index of common chars ie {"a"=>1, "d"=>0}
-    @ci = {}
-    common_chars.map { |c| @ci[c] = word.index(c) }
-    @ci.values
+    ci = {}
+    common_chars.map { |c| ci[c] = word.index(c) }
+    ci.values
   end
 
   def build_grid
@@ -79,20 +79,6 @@ class Cw
       end
     end
     puts print_lines
-
-    # puts "intersection: #{find_intersection}"
-    # puts "@common_chars: #{common_chars}"
-    #
-    # puts "Word1: #{@word1}"
-    # puts "@ci: #{@ci}"
-    #
-    # puts "FW1, FW2: #{[common_intersection(@word1).first.to_i, common_intersection(@word2).first.to_i]}"
-    # puts "LW1, LW2: #{[common_intersection(@word1).last.to_i, common_intersection(@word2).last.to_i]}"
-    # puts "Distance 1: #{@distance1}"
-    # puts "Distance 2: #{@distance2}"
-    #
-    # puts "Word2: #{@word2}"
-    # puts "@ci: #{@ci}"
   end
 
 end
