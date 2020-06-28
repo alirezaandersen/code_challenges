@@ -79,50 +79,43 @@ class Cw
       end
     end
     puts print_lines
-    puts "intersection: #{find_intersection}"
-    puts "@common_chars: #{common_chars}"
 
-    puts "Word1: #{@word1}"
-    puts "@ci: #{@ci}"
-
-    puts "FW1, FW2: #{[common_intersection(@word1).first.to_i, common_intersection(@word2).first.to_i]}"
-    puts "LW1, LW2: #{[common_intersection(@word1).last.to_i, common_intersection(@word2).last.to_i]}"
-    puts "Distance 1: #{@distance1}"
-    puts "Distance 2: #{@distance2}"
-
-    puts "Word2: #{@word2}"
-    puts "@ci: #{@ci}"
+    # puts "intersection: #{find_intersection}"
+    # puts "@common_chars: #{common_chars}"
+    #
+    # puts "Word1: #{@word1}"
+    # puts "@ci: #{@ci}"
+    #
+    # puts "FW1, FW2: #{[common_intersection(@word1).first.to_i, common_intersection(@word2).first.to_i]}"
+    # puts "LW1, LW2: #{[common_intersection(@word1).last.to_i, common_intersection(@word2).last.to_i]}"
+    # puts "Distance 1: #{@distance1}"
+    # puts "Distance 2: #{@distance2}"
+    #
+    # puts "Word2: #{@word2}"
+    # puts "@ci: #{@ci}"
   end
 
 end
 
+samples = [
+    {word1: 'cat', word2: 'hat'},
+    {word1: 'balloon', word2: 'bat'},
+    {word1: 'faint', word2: 'test'},
+    {word1: 'road', word2: 'dad'},
+    {word1: 'dad', word2: 'road'},
+    {word1: 'road', word2: 'zad'},
+    {word1: 'zara', word2: 'ziba'},
+    {word1: 'ali', word2: 'ara'},
+]
 
-grid = Cw.new()
+def print_sample(samples)
+  grid = Cw.new()
+  samples.each do |sample|
+    word1, word2 = sample.values
+    puts "word1: #{word1}  word2: #{word2}"
+    grid.crossword(word1, word2)
+    puts "\n"
+  end
+end
 
-puts ""
-grid.crossword("cat", "hat")
-
-puts ""
-grid.crossword("balloon", "bat")
-
-puts ""
-grid.crossword("faint", "test")
-
-puts ""
-grid.crossword("road", "dad")
-
-puts ""
-grid.crossword("dad", "road")
-
-puts ""
-grid.crossword("road", "zad")
-
-puts ""
-grid.crossword("zara", "ziba")
-
-puts ""
-grid.crossword("zara", "ali")
-
-puts""
-grid.crossword("ali", "zara")
-# @grid2 = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"], ["J", "K", "L"]]
+print_sample(samples)
