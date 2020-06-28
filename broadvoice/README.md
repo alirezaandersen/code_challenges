@@ -27,33 +27,38 @@
 
 ## Input & Output Examples
 
-cat & hat:
-balloon & bat
-faint & test
-road & dad
-dad & road
-
 ```
+*************
+cat & hat:
+
   h
  cat
   t
+*************
+balloon & bat:
 
 balloon
 a
 t
+*************
+faint & test:
 
 faint
     e
     s
     t
+*************
+road & dad:
 
   d
 road
   d
+*************
+dad & road:
 
  r
  o
 dad
  d
+*************
 ```
- 
