@@ -18,6 +18,7 @@ class Cw
     create_grid
     build_grid
     print_crossword
+    # find_intersection
   end
 
   def create_grid
@@ -28,26 +29,21 @@ class Cw
   def find_intersection
     @common_chars = @word1.chars & @word2.chars #['d', 'a']
 
-    # w2_lowest_char = nil
-    w2_intersection_index = @common_chars.map do |c|
-      @word2.index(c)
-    end.min
+    @intersections_w1 = {}
+    @common_chars.map { |c| @intersections_w1[c] = @word1.index(c) }
 
-    w2_intersection_letter = @word2.chars[w2_intersection_index]
-    w1_intersection_index = @word1.index(w2_intersection_letter)
+    #finds word 2
+    @intersections_w2 = {}
+    @common_chars.map { |c| @intersections_w2[c] = @word2.index(c) }
 
-    intersection_coord = [w1_intersection_index, w2_intersection_index]
+    fw1,fw2 = @intersections_w1.values.first,@intersections_w2.values.first
+    lw1,lw2 = @intersections_w1.values.last,@intersections_w2.values.last
+    @d1 = Math.sqrt(fw1**2 + fw2**2)
+    @d2 = Math.sqrt(lw1**2 + lw2**2)
+    @w1_intersection_index, @w2_intersection_index = @d1 < @d2 ? [fw1, fw2] : [lw1, lw2]
 
-    # puts "w1_intersection_index: #{w1_intersection_index} :: #{@word1}"
-    # puts "w2_intersection_letter: #{w2_intersection_letter}:: #{@word2}"
-    # puts "intersection_coord: #{intersection_coord}"
-    # [1,2]
+    intersection_coord = [@w1_intersection_index, @w2_intersection_index]
 
-    #   0 1 2
-    # 0   r
-    # 1   o
-    # 2 d a d
-    # 3   d
     return intersection_coord
   end
 
@@ -80,12 +76,33 @@ class Cw
       end
     end
     puts print_lines
+    puts "intersection: #{find_intersection}"
+    puts "@common_chars: #{@common_chars}"
+
+    puts "@intersections_w1: #{@intersections_w1}"
+    puts "@intersections_w2: #{@intersections_w2}"
+
+    puts "Word1: #{@word1}"
+    puts "@w1_intersection_index: #{@w1_intersection_index}"
+    puts "@w1_intersection_letter: #{@w1_intersection_letter}"
+
+    puts "FW1, FW2: #{[@intersections_w1.values.first, @intersections_w2.values.first]}"
+    puts "LW1, LW2: #{[@intersections_w1.values.last,@intersections_w2.values.last]}"
+    puts "D1: #{@d1}"
+    puts "D2: #{@d2}"
+
+    puts "Word2: #{@word2}"
+    puts "@w2_intersection_index: #{@w2_intersection_index}"
+    puts "@w2_intersection_letter: #{@w2_intersection_letter}"
   end
 
 end
 
 
 grid = Cw.new()
+puts ""
+grid.crossword("road", "zad")
+
 puts ""
 grid.crossword("road", "dad")
 
