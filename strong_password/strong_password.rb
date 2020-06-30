@@ -28,7 +28,7 @@ def repeating_chars(s)
   repeats = []
   sets_of_3 = []
   counter = 0
-  s.chars.each do | char|
+  s.chars.each do |char| #testing
 
     if !sets_of_3.empty?
       sets_of_3.last.join().include?(char)
