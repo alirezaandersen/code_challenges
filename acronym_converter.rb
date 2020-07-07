@@ -11,3 +11,30 @@ require 'pry'
 #  - GNU Image Manipulation Program => GIMP
 #  - Complementary metal-oxide semiconductor => CMOS
 #  - Something - I made up from thin air => SIMUFTA
+
+examples = [
+  "Portable Network Graphics",
+  "First In, First Out",
+  "Asynchronous Javascript and XML",
+  "GNU Image Manipulation Program",
+  "Complementary metal-oxide semiconductor",
+  "Something - I made up from thin air"
+]
+
+def acronym(string)
+  clean_string = special_char_cleaner(string)
+  abbrev = clean_string.split.map(&:chr).join.upcase
+  return { string => abbrev }
+end
+
+def special_char_cleaner(string)
+  string.gsub!(/[^0-9A-Za-z]/, ' ')
+end
+
+def converter(examples)
+  examples.each do |string|
+    puts "#{acronym(string)}"
+  end
+end
+
+converter(examples)
