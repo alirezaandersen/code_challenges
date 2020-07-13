@@ -18,7 +18,10 @@ examples = [
   "Asynchronous Javascript and XML",
   "GNU Image Manipulation Program",
   "Complementary metal-oxide semiconductor",
-  "Something - I made up from thin air"
+  "Something - I made up from thin air",
+  "This is a Test",
+  "   This is a test 2",
+  "3 . This & is % a test !"
 ]
 
 def acronym(string)
