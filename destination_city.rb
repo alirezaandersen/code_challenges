@@ -1,47 +1,32 @@
 
 def dest_city(paths)
-    destination = []
-    paths.map do |place|
-      destination.push(place) unless destination.include?(place)
-    end
-    destination
-end
-
-
-# @param {String[][]} paths
-# @return {String}
-def dest_city(paths)
-    destination = []
-    # duplicates = []
-    # count = 0
-    paths.flatten.map do |place|
-        if destination.include?(place)
-            duplicates.each_with_index do |w, i|
-                if w == place
-
-                    puts "Des:: #{destination}"
-                    # destination.delete(w)
-                    destination << destination[i + 1]
-                end
-            end
-        end
-    end
-    # puts "Count:: #{count}"
-    # puts "Dup:: #{duplicates}"
-    destination
+  res = paths.map {|p| p[1]} - paths.map {|p| p[0] }
+  res[0]
 end
 # You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
 #
 # It is guaranteed that the graph of paths forms a line without any loop, therefore, there will be exactly one destination city.
-#
-# Input: paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+
+# Input:
+path1 = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
 # Output: "Sao Paulo"
-#
-# Input: paths = [["B","C"],["D","B"],["C","A"]]
+
+# Input:
+path2 = [["B","C"],["D","B"],["C","A"]]
 # Output: "A"
-#
-# Input: paths = [["A","Z"]]
+
+# Input:
+path3 = [["A","Z"]]
 # Output: "Z"
-#
-# Input: paths= [["jMgaf WaWA","iinynVdmBz"],[" QCrEFBcAw","wRPRHznLWS"],["iinynVdmBz","OoLjlLFzjz"],["OoLjlLFzjz"," QCrEFBcAw"],["IhxjNbDeXk","jMgaf WaWA"],["jmuAYy vgz","IhxjNbDeXk"]]
+
+# Input:
+path4= [["jMgaf WaWA","iinynVdmBz"],[" QCrEFBcAw","wRPRHznLWS"],["iinynVdmBz","OoLjlLFzjz"],["OoLjlLFzjz"," QCrEFBcAw"],["IhxjNbDeXk","jMgaf WaWA"],["jmuAYy vgz","IhxjNbDeXk"]]
 # Output: "wRPRHznLWS"
+
+paths = [path1, path2, path3, path4]
+
+def process(paths)
+  paths.each { |p| puts "#{dest_city(p)}" }
+end
+
+process(paths)
