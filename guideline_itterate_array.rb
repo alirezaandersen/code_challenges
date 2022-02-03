@@ -1,5 +1,5 @@
 require "minitest/autorun"
-# require 'pry'
+require 'pry'
 
 #
 # Implement the contains_all? method
@@ -8,16 +8,26 @@ require "minitest/autorun"
 # should return true if all elements in inputs are included in supply, otherwise
 # it should return false.
 #
+
 def contains_all?(inputs, supply)
-  inputs = [] if inputs.nil?
-  supply = [] if supply.nil?
-  
-  return true if inputs.empty? || supply.empty?
-  i = inputs.tally
-  s = supply.tally
+  arr1, arr2 = conversion(inputs, supply)
+
+  return true if arr1.empty? || arr2.empty?
+
+  i = arr1.tally
+  s = arr2.tally
 
   i.all?  { |a,c| s.fetch(a, 0) >= c }
+end
 
+def conversion(inputs, supply)
+  arr1 = inputs.is_a?(String) || inputs.is_a?(Integer) ? inputs.to_s.split() : inputs
+  arr2 = supply.is_a?(String) || supply.is_a?(Integer) ? supply.to_s.split() : supply
+
+  arr1 = [] if inputs.nil?
+  arr2 = [] if supply.nil?
+
+  [arr1, arr2]
 end
 
 describe "contains_all?" do
