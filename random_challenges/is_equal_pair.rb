@@ -1,7 +1,7 @@
 require "rspec/autorun"
 require 'pry'
 
-# Code Challenge and Ruby Basics:
+# Code Challenge and Ruby Basics for fuzzy Pet Health
 # https://gist.github.com/ludaxkris/5ea09260ece6018ac3636213f53b3c58
 # In Ruby sometimes Object == Object doesn't return what we were expecting.
 # A tiny example of this is we don't care if a Hash key is a symbol or a string.
