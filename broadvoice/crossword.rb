@@ -29,15 +29,15 @@ class Cw
   end
 
   def find_intersection
-    #compare first common_chars location of word1 and word2
+    # compare first common_chars location of word1 and word2
     fw1 = common_intersection(@word1).first.to_i
     fw2 = common_intersection(@word2).first.to_i
 
-    #compare last common chars location of word1 and word2
+    # compare last common chars location of word1 and word2
     lw1 = common_intersection(@word1).last.to_i
     lw2 = common_intersection(@word2).last.to_i
 
-    #calculate the shortest distance of first and last common_chars of each word
+    # calculate the shortest distance of first and last common_chars of each word
     distance1 = Math.sqrt(fw1**2 + fw2**2)
     distance2 = Math.sqrt(lw1**2 + lw2**2)
 
@@ -45,7 +45,7 @@ class Cw
   end
 
   def common_intersection(word)
-    #finds index of common chars ie {"a"=>1, "d"=>0}
+    # finds index of common chars ie {"a"=>1, "d"=>0}
     ci = {}
     common_chars.map { |c| ci[c] = word.index(c) }
     ci.values
