@@ -28,6 +28,4 @@ def get_query_params(response_link)
   URI.decode_www_form(new_uri.query).to_h
 end
 
-# 503047199
-
 puts call
